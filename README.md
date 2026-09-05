@@ -1,6 +1,12 @@
+<p align="right">
+  <img src="docs/aineko.svg" alt="" width="56" />
+</p>
+
 # Dual DGX Spark RoCE / NCCL lab notes
 
 Lab notes from a 2026-09-05 measure→compare→pick session on a one-cable dual NVIDIA DGX Spark cluster (GB10 / current nvidia-open kernel).
+
+**Physical interconnect:** NVIDIA **N911-class** QSFP DAC (Micro Center carries them), right↔right.
 
 **GitHub Pages:** https://sw30labs.github.io/dgx-spark-roce-lab/
 

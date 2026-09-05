@@ -1,8 +1,3 @@
----
-title: "Dual DGX Spark performance lab notes — 2026-09-05"
-description: "Measure→compare→pick on a one-cable dual DGX Spark cluster — RDMA, NCCL, GDR dead-ends, scoped sudoers."
----
-
 # Dual DGX Spark performance lab notes — 2026-09-05
 
 Companion to the LinkedIn draft. Operator runbook of what we did, what won, and how to reproduce.
@@ -18,7 +13,7 @@ Companion to the LinkedIn draft. Operator runbook of what we did, what won, and 
 | Item | Value |
 |---|---|
 | Nodes | sparkone (`192.168.86.44`), sparktwo (`192.168.86.38`) |
-| Fabric | 1× QSFP DAC, **right↔right** |
+| Fabric | 1× QSFP DAC (**N911 class**, Micro Center), **right↔right** |
 | Rails | `enp1s0f1np1` / `rocep1s0f1` → `192.168.100.10↔.11` |
 |  | `enP2p1s0f1np1` / `roceP2p1s0f1` → `192.168.101.10↔.11` |
 | Link | 200000 Mb/s, MTU **9000**, GID idx **3** (RoCEv2 IPv4) |
@@ -135,5 +130,7 @@ sparkone: `.10` on both subnets. sparktwo: `.11`. MTU 9000. `dhcp4: no`. Managem
 ---
 
 ## Appendix C — Second cable (optional later)
+
+Same **N911-class** QSFP DAC family (Micro Center carries them).
 
 L↔L + R↔R can add rails. Expect more raw aggregate and multi-job headroom; **not** 2× on today's 2-rank all_reduce while GDR stays off. Buy for fabric headroom/redundancy, not a magic NCCL doubling.
