@@ -37,6 +37,6 @@ Leave the live `192.168.100/101` fabric. Don't renumber to the runbook's `172.28
 
 **Takeaway:** on current Spark kernel/stack, the best reachable collective config is dual-rail RoCE + mgmt bootstrap + GID 3. The next real unlock is hardware (second DAC for left↔left) or a future NVIDIA UMA GDR path — not more YAML folklore.
 
-Full lab notes + sudoers appendix in the companion doc (Desktop).
+Full lab notes + sudoers appendix: https://sw30labs.github.io/dgx-spark-roce-lab/
 
 #DGX #NCCL #RoCE #HPC #AIInfra
