@@ -1,0 +1,15 @@
+# /etc/sudoers.d/90-spider-spark-ops
+# Scoped NOPASSWD for Spark Cluster Engineer agent ops (spider).
+# Install on BOTH sparkone and sparktwo via: sudo visudo -f /etc/sudoers.d/90-spider-spark-ops
+# Then: sudo chmod 440 /etc/sudoers.d/90-spider-spark-ops && sudo visudo -c
+#
+# Does NOT grant: shell, apt, arbitrary tee/cat, rm outside modules-load.d, reboot.
+# Leave Sync/gb10-clock-cap drop-ins alone.
+# Defaults!lecture:false can stay unset.
+
+Cmnd_Alias SPARK_KMOD = /usr/sbin/modprobe, /usr/sbin/rmmod, /usr/sbin/lsmod
+Cmnd_Alias SPARK_NETPLAN = /usr/sbin/netplan
+Cmnd_Alias SPARK_MODULES_LOAD = /usr/bin/tee /etc/modules-load.d/*, /usr/bin/rm /etc/modules-load.d/*
+Cmnd_Alias SPARK_NETPLAN_READ = /usr/bin/cat /etc/netplan/*
+
+spider ALL=(root) NOPASSWD: SPARK_KMOD, SPARK_NETPLAN, SPARK_MODULES_LOAD, SPARK_NETPLAN_READ
